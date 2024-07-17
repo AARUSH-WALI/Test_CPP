@@ -1,38 +1,33 @@
-class Solution {
-public:
-    bool check(char ch,char ch1){
-        if(ch==')'&&ch1=='('){
-            return true;
+#include<iostream>
+using namespace std;
+int count=0;
+int divisibleBy3(int arr[],int s)
+{
+    for(int j=0;j<s;j++)
+    {
+        if(j<0)
+        {
+            cout<<"Invalid Input";
         }
-         if(ch==']'&&ch1=='['){
-            return true;
+        else
+        {
+         if(arr[j]%3==0)
+        {
+            count+=1;
         }
-         if(ch=='}'&&ch1=='{'){
-            return true;
         }
-        return false;
     }
-    bool isValid(string s) {
-        stack<char> st;
-        for(int i=0;i<s.length();i++){
-            char ch=s.at(i);
-            if(ch=='('||ch=='{'||ch=='['){
-                st.push(ch);
-            }
-            else{
-                if(st.empty()){
-                    return false;
-                }
-                char ch1=st.top();
-                st.pop();
-                if(!check(ch,ch1)){
-                    return false;
-                }
-            }
-        }
-        if(!st.empty()){
-            return false;
-        }
-        return true;
+    return count;
+}
+int main()
+{
+    int s;
+    cin>>s;
+    int arr[s];
+    for(int i=0;i<s;i++)
+    {
+        cin>>arr[i];
     }
-};
+    int num=divisibleBy3(arr,s);
+    cout<<num;
+}
